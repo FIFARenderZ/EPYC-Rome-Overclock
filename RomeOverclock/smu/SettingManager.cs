@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using ZenStatesDebugTool;
+
+[assembly: InternalsVisibleTo("RomeOverclockUnittest"),
+    InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace RomeOverclock
 {
@@ -19,8 +23,8 @@ namespace RomeOverclock
         private const string kKeyDualSocket = "DualSocket";
         private const string kKeyFullPerf = "FullPerf";
 
-        private readonly SettingDict mSettings = new SettingDict();
-        private readonly SettingDict mAppliedSettings = new SettingDict();
+        internal readonly SettingDict mSettings = new SettingDict();
+        internal readonly SettingDict mAppliedSettings = new SettingDict();
 
         public SettingManager()
         {
@@ -148,12 +152,12 @@ namespace RomeOverclock
             SetInteger(dict, key, val ? 1 : 0);
         }
 
-        private bool HasChanged(string key)
+        internal virtual bool HasChanged(string key)
         {
             return GetInteger(mSettings, key) != GetInteger(mAppliedSettings, key);
         }
 
-        private void ApplySettingChange(string key, Func<bool> apply)
+        internal virtual void ApplySettingChange(string key, Func<bool> apply)
         {
             if (HasChanged(key))
             {
