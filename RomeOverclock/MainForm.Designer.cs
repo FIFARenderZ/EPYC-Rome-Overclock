@@ -29,18 +29,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.revertVoltageBtn = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.voltageInp = new System.Windows.Forms.NumericUpDown();
             this.dualsocketCheck = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.AC_freqSelect = new System.Windows.Forms.ComboBox();
-            this.applyACBtn = new System.Windows.Forms.Button();
             this.applyAllBtn = new System.Windows.Forms.Button();
-            this.revertACBtn = new System.Windows.Forms.Button();
+            this.revertAllBtn = new System.Windows.Forms.Button();
             this.overclockCheck = new System.Windows.Forms.CheckBox();
             this.EDC_inp = new System.Windows.Forms.NumericUpDown();
             this.TDC_inp = new System.Windows.Forms.NumericUpDown();
@@ -70,9 +67,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.fullPerfBtn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.applyLockBtn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.logBox = new System.Windows.Forms.RichTextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -84,7 +79,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.presetPresetSelect = new System.Windows.Forms.ComboBox();
-            this.presetApplyBtn = new System.Windows.Forms.Button();
             this.presetCpuSelect = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -105,15 +99,15 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.voltageInp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.EDC_inp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.TDC_inp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.PPT_inp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.voltageInp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EDC_inp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TDC_inp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPT_inp)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -122,32 +116,23 @@
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.revertVoltageBtn, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.voltageInp, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.dualsocketCheck, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.AC_freqSelect, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.applyACBtn, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.applyAllBtn, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.revertACBtn, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.applyAllBtn, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.revertAllBtn, 4, 0);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // revertVoltageBtn
-            // 
-            resources.ApplyResources(this.revertVoltageBtn, "revertVoltageBtn");
-            this.revertVoltageBtn.Name = "revertVoltageBtn";
-            this.revertVoltageBtn.UseVisualStyleBackColor = true;
-            this.revertVoltageBtn.Click += new System.EventHandler(this.revertVoltageBtn_Click);
             // 
             // label13
             // 
@@ -158,12 +143,28 @@
             // 
             resources.ApplyResources(this.voltageInp, "voltageInp");
             this.voltageInp.DecimalPlaces = 2;
-            this.voltageInp.Increment = new decimal(new int[] {5, 0, 0, 131072});
+            this.voltageInp.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
             this.voltageInp.InterceptArrowKeys = false;
-            this.voltageInp.Maximum = new decimal(new int[] {15, 0, 0, 65536});
-            this.voltageInp.Minimum = new decimal(new int[] {65, 0, 0, 131072});
+            this.voltageInp.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            this.voltageInp.Minimum = new decimal(new int[] {
+            65,
+            0,
+            0,
+            131072});
             this.voltageInp.Name = "voltageInp";
-            this.voltageInp.Value = new decimal(new int[] {9, 0, 0, 65536});
+            this.voltageInp.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            65536});
             // 
             // dualsocketCheck
             // 
@@ -183,26 +184,19 @@
             this.AC_freqSelect.FormattingEnabled = true;
             this.AC_freqSelect.Name = "AC_freqSelect";
             // 
-            // applyACBtn
-            // 
-            resources.ApplyResources(this.applyACBtn, "applyACBtn");
-            this.applyACBtn.Name = "applyACBtn";
-            this.applyACBtn.UseVisualStyleBackColor = true;
-            this.applyACBtn.Click += new System.EventHandler(this.applyACBtn_Click);
-            // 
             // applyAllBtn
             // 
             resources.ApplyResources(this.applyAllBtn, "applyAllBtn");
             this.applyAllBtn.Name = "applyAllBtn";
             this.applyAllBtn.UseVisualStyleBackColor = true;
-            this.applyAllBtn.Click += new System.EventHandler(this.applyBtn_Click);
+            this.applyAllBtn.Click += new System.EventHandler(this.applyAllBtn_Click);
             // 
-            // revertACBtn
+            // revertAllBtn
             // 
-            resources.ApplyResources(this.revertACBtn, "revertACBtn");
-            this.revertACBtn.Name = "revertACBtn";
-            this.revertACBtn.UseVisualStyleBackColor = true;
-            this.revertACBtn.Click += new System.EventHandler(this.revertACBtn_Click);
+            resources.ApplyResources(this.revertAllBtn, "revertAllBtn");
+            this.revertAllBtn.Name = "revertAllBtn";
+            this.revertAllBtn.UseVisualStyleBackColor = true;
+            this.revertAllBtn.Click += new System.EventHandler(this.revertAllBtn_Click);
             // 
             // overclockCheck
             // 
@@ -214,21 +208,33 @@
             // 
             resources.ApplyResources(this.EDC_inp, "EDC_inp");
             this.EDC_inp.InterceptArrowKeys = false;
-            this.EDC_inp.Maximum = new decimal(new int[] {1500, 0, 0, 0});
+            this.EDC_inp.Maximum = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
             this.EDC_inp.Name = "EDC_inp";
             // 
             // TDC_inp
             // 
             resources.ApplyResources(this.TDC_inp, "TDC_inp");
             this.TDC_inp.InterceptArrowKeys = false;
-            this.TDC_inp.Maximum = new decimal(new int[] {1000, 0, 0, 0});
+            this.TDC_inp.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.TDC_inp.Name = "TDC_inp";
             // 
             // PPT_inp
             // 
             resources.ApplyResources(this.PPT_inp, "PPT_inp");
             this.PPT_inp.InterceptArrowKeys = false;
-            this.PPT_inp.Maximum = new decimal(new int[] {1800, 0, 0, 0});
+            this.PPT_inp.Maximum = new decimal(new int[] {
+            1800,
+            0,
+            0,
+            0});
             this.PPT_inp.Name = "PPT_inp";
             // 
             // label5
@@ -250,7 +256,8 @@
             // 
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.statusLabel});
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -361,28 +368,64 @@
             // 
             resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
             this.numericUpDown1.InterceptArrowKeys = false;
-            this.numericUpDown1.Maximum = new decimal(new int[] {800, 0, 0, 0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {45, 0, 0, 0});
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Value = new decimal(new int[] {750, 0, 0, 0});
+            this.numericUpDown1.Value = new decimal(new int[] {
+            750,
+            0,
+            0,
+            0});
             // 
             // numericUpDown2
             // 
             resources.ApplyResources(this.numericUpDown2, "numericUpDown2");
             this.numericUpDown2.InterceptArrowKeys = false;
-            this.numericUpDown2.Maximum = new decimal(new int[] {800, 0, 0, 0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {45, 0, 0, 0});
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Value = new decimal(new int[] {800, 0, 0, 0});
+            this.numericUpDown2.Value = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
             // 
             // numericUpDown3
             // 
             resources.ApplyResources(this.numericUpDown3, "numericUpDown3");
             this.numericUpDown3.InterceptArrowKeys = false;
-            this.numericUpDown3.Maximum = new decimal(new int[] {1800, 0, 0, 0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {15, 0, 0, 0});
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1800,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Value = new decimal(new int[] {1300, 0, 0, 0});
+            this.numericUpDown3.Value = new decimal(new int[] {
+            1300,
+            0,
+            0,
+            0});
             // 
             // label8
             // 
@@ -406,30 +449,15 @@
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.TDC_inp, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.fullPerfBtn, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label14, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.EDC_inp, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
-            // fullPerfBtn
-            // 
-            resources.ApplyResources(this.fullPerfBtn, "fullPerfBtn");
-            this.fullPerfBtn.Name = "fullPerfBtn";
-            this.fullPerfBtn.UseVisualStyleBackColor = true;
-            this.fullPerfBtn.Click += new System.EventHandler(this.fullPerfBtn_Click);
-            // 
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
-            // 
-            // applyLockBtn
-            // 
-            resources.ApplyResources(this.applyLockBtn, "applyLockBtn");
-            this.applyLockBtn.Name = "applyLockBtn";
-            this.applyLockBtn.UseVisualStyleBackColor = true;
-            this.applyLockBtn.Click += new System.EventHandler(this.applyLockBtn_Click);
             // 
             // label11
             // 
@@ -481,7 +509,6 @@
             // tableLayoutPanel4
             // 
             resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.applyLockBtn, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.overclockCheck, 0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
@@ -496,7 +523,6 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
             this.tableLayoutPanel7.Controls.Add(this.presetPresetSelect, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.presetApplyBtn, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.presetCpuSelect, 0, 0);
             this.tableLayoutPanel7.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -506,30 +532,21 @@
             resources.ApplyResources(this.presetPresetSelect, "presetPresetSelect");
             this.presetPresetSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.presetPresetSelect.FormattingEnabled = true;
-            this.presetPresetSelect.Items.AddRange(new object[]
-            {
-                resources.GetString("presetPresetSelect.Items"), resources.GetString("presetPresetSelect.Items1"),
-                resources.GetString("presetPresetSelect.Items2")
-            });
+            this.presetPresetSelect.Items.AddRange(new object[] {
+            resources.GetString("presetPresetSelect.Items"),
+            resources.GetString("presetPresetSelect.Items1"),
+            resources.GetString("presetPresetSelect.Items2")});
             this.presetPresetSelect.Name = "presetPresetSelect";
-            // 
-            // presetApplyBtn
-            // 
-            resources.ApplyResources(this.presetApplyBtn, "presetApplyBtn");
-            this.presetApplyBtn.Name = "presetApplyBtn";
-            this.presetApplyBtn.UseVisualStyleBackColor = true;
-            this.presetApplyBtn.Click += new System.EventHandler(this.presetApplyBtn_Click);
             // 
             // presetCpuSelect
             // 
             resources.ApplyResources(this.presetCpuSelect, "presetCpuSelect");
             this.presetCpuSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.presetCpuSelect.FormattingEnabled = true;
-            this.presetCpuSelect.Items.AddRange(new object[]
-            {
-                resources.GetString("presetCpuSelect.Items"), resources.GetString("presetCpuSelect.Items1"),
-                resources.GetString("presetCpuSelect.Items2")
-            });
+            this.presetCpuSelect.Items.AddRange(new object[] {
+            resources.GetString("presetCpuSelect.Items"),
+            resources.GetString("presetCpuSelect.Items1"),
+            resources.GetString("presetCpuSelect.Items2")});
             this.presetCpuSelect.Name = "presetCpuSelect";
             // 
             // tableLayoutPanel5
@@ -554,12 +571,28 @@
             // 
             resources.ApplyResources(this.numericUpDown4, "numericUpDown4");
             this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Increment = new decimal(new int[] {5, 0, 0, 131072});
+            this.numericUpDown4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
             this.numericUpDown4.InterceptArrowKeys = false;
-            this.numericUpDown4.Maximum = new decimal(new int[] {15, 0, 0, 65536});
-            this.numericUpDown4.Minimum = new decimal(new int[] {65, 0, 0, 131072});
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            this.numericUpDown4.Minimum = new decimal(new int[] {
+            65,
+            0,
+            0,
+            131072});
             this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Value = new decimal(new int[] {9, 0, 0, 65536});
+            this.numericUpDown4.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            65536});
             // 
             // checkBox2
             // 
@@ -619,12 +652,28 @@
             // 
             resources.ApplyResources(this.numericUpDown5, "numericUpDown5");
             this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Increment = new decimal(new int[] {5, 0, 0, 131072});
+            this.numericUpDown5.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
             this.numericUpDown5.InterceptArrowKeys = false;
-            this.numericUpDown5.Maximum = new decimal(new int[] {15, 0, 0, 65536});
-            this.numericUpDown5.Minimum = new decimal(new int[] {65, 0, 0, 131072});
+            this.numericUpDown5.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            this.numericUpDown5.Minimum = new decimal(new int[] {
+            65,
+            0,
+            0,
+            131072});
             this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Value = new decimal(new int[] {9, 0, 0, 65536});
+            this.numericUpDown5.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            65536});
             // 
             // checkBox3
             // 
@@ -677,16 +726,16 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.voltageInp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.EDC_inp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.TDC_inp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.PPT_inp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.voltageInp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EDC_inp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TDC_inp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPT_inp)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -695,11 +744,12 @@
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -710,9 +760,8 @@
         private System.Windows.Forms.ToolStripLabel statusLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button applyAllBtn;
         private System.Windows.Forms.ComboBox AC_freqSelect;
-        private System.Windows.Forms.Button applyACBtn;
+        private System.Windows.Forms.Button applyAllBtn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown EDC_inp;
         private System.Windows.Forms.NumericUpDown TDC_inp;
@@ -743,19 +792,16 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox dualsocketCheck;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button revertACBtn;
+        private System.Windows.Forms.Button revertAllBtn;
         private System.Windows.Forms.NumericUpDown voltageInp;
-        private System.Windows.Forms.Button fullPerfBtn;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button applyLockBtn;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button presetApplyBtn;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
@@ -776,6 +822,5 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ComboBox presetPresetSelect;
         private System.Windows.Forms.ComboBox presetCpuSelect;
-        private System.Windows.Forms.Button revertVoltageBtn;
     }
 }
