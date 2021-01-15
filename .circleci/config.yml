@@ -1,17 +1,25 @@
- version: 2.1
+version: 2.1
 
- orbs:
+orbs:
   win: circleci/windows@2.2.0
 
- jobs:
-   build:
-     executor: win/default     
-    
-     steps:
-       - checkout
-       - run:
+jobs:
+  build:
+    executor: win/default     
+    steps:
+      - checkout
+      - run:
           name: "Install project dependencies"
           command: dotnet restore
-       - run:
-          name: "Build project"
-          command: msbuild RomeOverclock/RomeOverclock.csproj
+      - run:
+          name: "Build debug"
+          command: msbuild RomeOverclock/RomeOverclock.csproj /property:Configuration=Debug
+      - run:
+          name: "Build release"
+          command: msbuild RomeOverclock/RomeOverclock.csproj /property:Configuration=Release
+      - run:
+          name: "Build unit test"
+          command: msbuild RomeOverclockUnittest\RomeOverclockUnittest.csproj /property:Configuration=Debug
+      - run:
+          name: "Run unit test"
+          command: dotnet vstest RomeOverclockUnitTest/bin/Debug/netcoreapp3.1/RomeOverclockUnitTest.dll

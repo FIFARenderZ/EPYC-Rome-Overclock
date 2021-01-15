@@ -6,3 +6,5 @@ Confused/
 .vs
 *.user
 RomeOverclockUnittest/obj
+packages
+RomeOverclockUnitTest/bin
