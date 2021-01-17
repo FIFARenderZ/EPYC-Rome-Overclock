@@ -1,11 +1,13 @@
-﻿using OpenLibSys;
-using RomeOverclock;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using OpenLibSys;
+using RomeOverclock;
 
-[assembly: InternalsVisibleTo("RomeOverclockUnittest")]
+[assembly: InternalsVisibleTo("RomeOverclockUnittest"),
+    InternalsVisibleTo("DynamicProxyGenAssembly2")]
+
 namespace ZenStatesDebugTool
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>")]
@@ -94,9 +96,22 @@ namespace ZenStatesDebugTool
         }
     }
 
-    public class SMUCommand
+    public class SMUCommand : IDisposable
     {
         public delegate void LoggerDelegate(string msg);
+
+        public interface OlsInterface : IDisposable
+        {
+            uint GetStatus();
+
+            uint GetDllStatus();
+
+            int CpuidPx(uint index, ref uint eax, ref uint ebx, ref uint ecx, ref uint edx, UIntPtr processAffinityMask);
+
+            int WritePciConfigDwordEx(uint pciAddress, uint regAddress, uint value);
+
+            int ReadPciConfigDwordEx(uint pciAddress, uint regAddress, ref uint value);
+        }
 
         public enum SMUCmdConstant : uint
         {
@@ -116,26 +131,71 @@ namespace ZenStatesDebugTool
             kFullPerf = 0xA,
         }
 
+        private class OlsImpl : OlsInterface
+        {
+            private readonly Ols mOls;
+
+            public OlsImpl()
+            {
+                mOls = new Ols();
+            }
+
+            public uint GetStatus()
+            {
+                return mOls.GetStatus();
+            }
+
+            public uint GetDllStatus()
+            {
+                return mOls.GetDllStatus();
+            }
+
+            public int CpuidPx(uint index, ref uint eax, ref uint ebx, ref uint ecx, ref uint edx, UIntPtr processAffinityMask)
+            {
+                return mOls.CpuidPx(index, ref eax, ref ebx, ref ecx, ref edx, processAffinityMask);
+            }
+
+            public int WritePciConfigDwordEx(uint pciAddress, uint regAddress, uint value)
+            {
+                return mOls.WritePciConfigDwordEx(pciAddress, regAddress, value);
+            }
+
+            public int ReadPciConfigDwordEx(uint pciAddress, uint regAddress, ref uint value)
+            {
+                return mOls.ReadPciConfigDwordEx(pciAddress, regAddress, ref value);
+            }
+
+            public void Dispose()
+            {
+                mOls.Dispose();
+            }
+        }
+
         private bool mIsDualSocket;
-        private readonly Ols mOls;
+        private readonly OlsInterface mOls;
         private readonly LoggerDelegate mLogger;
         private readonly SMU mSmu = new Zen2Settings();
         private readonly Mutex mMutexPci = new Mutex();
 
         public SMUCommand(bool isDualSocket, LoggerDelegate logger)
         {
-            mOls = new Ols();
+            mOls = new OlsImpl();
             CheckOlsStatus();
 
             mIsDualSocket = isDualSocket;
             mLogger = logger;
         }
 
-        internal SMUCommand(Ols ols, bool isDualSocket, LoggerDelegate logger)
+        internal SMUCommand(OlsInterface ols, bool isDualSocket, LoggerDelegate logger)
         {
             mOls = ols;
             mIsDualSocket = isDualSocket;
             mLogger = logger;
+        }
+
+        public void Dispose()
+        {
+            mOls.Dispose();
         }
 
         public bool isDualSocket
@@ -149,7 +209,7 @@ namespace ZenStatesDebugTool
             get { return GetCpuInfo() & 0xFFFFFFF0; }
         }
 
-        public bool ApplyFrequencyAllCoreSetting(uint frequency)
+        public virtual bool ApplyFrequencyAllCoreSetting(uint frequency)
         {
             return ApplyCommandImpl(SMUCmdConstant.kSetAllCoreFreq, Convert.ToUInt32(frequency), (_) =>
             {
@@ -157,7 +217,7 @@ namespace ZenStatesDebugTool
             });
         }
 
-        public bool ApplyPPTSetting(uint val)
+        public virtual bool ApplyPPTSetting(uint val)
         {
             return ApplyCommandImpl(SMUCmdConstant.kSetPPT, Convert.ToUInt32(val * 1000), (_) =>
             {
@@ -165,7 +225,7 @@ namespace ZenStatesDebugTool
             });
         }
 
-        public bool ApplyTDCSetting(uint val)
+        public virtual bool ApplyTDCSetting(uint val)
         {
             return ApplyCommandImpl(SMUCmdConstant.kSetTDC, Convert.ToUInt32(val * 1000), (_) =>
             {
@@ -173,7 +233,7 @@ namespace ZenStatesDebugTool
             });
         }
 
-        public bool ApplyEDCSetting(uint val)
+        public virtual bool ApplyEDCSetting(uint val)
         {
             return ApplyCommandImpl(SMUCmdConstant.kSetEDC, Convert.ToUInt32(val * 1000), (_) =>
             {
@@ -191,7 +251,7 @@ namespace ZenStatesDebugTool
             return vol * -0.00625m + 1.55m;
         }
 
-        public bool ApplyVoltage(int vol, int min = 12, int max = 128)
+        public virtual bool ApplyVoltage(int vol, int min = 12, int max = 128)
         {
             if (vol < min || vol > max) return false;
             return ApplyCommandImpl(SMUCmdConstant.kSetAllCoreVoltage, Convert.ToUInt32(vol), (_) =>
@@ -201,23 +261,7 @@ namespace ZenStatesDebugTool
             });
         }
 
-        public bool RevertVoltage()
-        {
-            return ApplyCommandImpl(SMUCmdConstant.kResetDefaultVoltage, 1, (_) =>
-            {
-                return "Reverted voltage to normal.";
-            });
-        }
-
-        public bool RevertFrequency()
-        {
-            return ApplyCommandImpl(SMUCmdConstant.kResetDefaultFreq, 1, (_) =>
-            {
-                return "Reverted frequency to normal.";
-            });
-        }
-
-        public bool ApplyFreqLock(bool isLocked)
+        public virtual bool ApplyFreqLock(bool isLocked)
         {
             if (isLocked)
             {
@@ -233,6 +277,22 @@ namespace ZenStatesDebugTool
                     return "Locked frequencies.";
                 });
             }
+        }
+
+        public virtual bool RevertVoltage()
+        {
+            return ApplyCommandImpl(SMUCmdConstant.kResetDefaultVoltage, 1, (_) =>
+            {
+                return "Reverted voltage to normal.";
+            });
+        }
+
+        public bool RevertFrequency()
+        {
+            return ApplyCommandImpl(SMUCmdConstant.kResetDefaultFreq, 1, (_) =>
+            {
+                return "Reverted frequency to normal.";
+            });
         }
 
         /**
@@ -259,7 +319,7 @@ namespace ZenStatesDebugTool
             });
         }
 
-        private bool ApplyCommandImpl(SMUCmdConstant cmd, uint val, Func<uint, string> msgFunc)
+        internal virtual bool ApplyCommandImpl(SMUCmdConstant cmd, uint val, Func<uint, string> msgFunc)
         {
             if (ApplySMUCommand(cmd, val, mSmu.SMU_PCI_ADDR) != SMU.Status.OK)
             {
@@ -275,9 +335,10 @@ namespace ZenStatesDebugTool
                     mLogger.Invoke($"Socket 2 apply cmd error: {cmd}");
                     return false;
                 }
+
+                mLogger.Invoke($"Socket 2: {msgFunc.Invoke(val)}");
             }
 
-            mLogger.Invoke($"Socket 2: {msgFunc.Invoke(val)}");
             return true;
         }
 
@@ -328,7 +389,7 @@ namespace ZenStatesDebugTool
             return 0;
         }
 
-        internal bool SmuWriteReg(uint addr, uint data, uint pciAddr)
+        internal virtual bool SmuWriteReg(uint addr, uint data, uint pciAddr)
         {
             // Clear response
             int res = mOls.WritePciConfigDwordEx(pciAddr, mSmu.SMU_OFFSET_ADDR, addr);
@@ -340,7 +401,7 @@ namespace ZenStatesDebugTool
             return res == 1;
         }
 
-        internal bool SmuReadReg(uint addr, ref uint data, uint pciAddr)
+        internal virtual bool SmuReadReg(uint addr, ref uint data, uint pciAddr)
         {
             // Clear response
             int res = mOls.WritePciConfigDwordEx(pciAddr, mSmu.SMU_OFFSET_ADDR, addr);
@@ -352,7 +413,7 @@ namespace ZenStatesDebugTool
             return res == 1;
         }
 
-        internal bool SmuWaitDone(uint pciAddr)
+        internal virtual bool SmuWaitDone(uint pciAddr)
         {
             bool res = false;
             ushort timeout = 1000;
@@ -393,7 +454,7 @@ namespace ZenStatesDebugTool
             return res;
         }
 
-        private bool SmuWrite(uint msg, uint value, uint pciAddr)
+        internal virtual bool SmuWrite(uint msg, uint value, uint pciAddr)
         {
             // Mutex
             bool res = mMutexPci.WaitOne(5000);
@@ -423,11 +484,11 @@ namespace ZenStatesDebugTool
             return res;
         }
 
-        private SMU.Status ApplySMUCommand(SMUCmdConstant command, uint arg, uint pciAddr)
+        internal virtual SMU.Status ApplySMUCommand(SMUCmdConstant command, uint value, uint pciAddr)
         {
             try
             {
-                if (SmuWrite((uint)command, arg, pciAddr))
+                if (SmuWrite((uint)command, value, pciAddr))
                 {
                     // Read response
                     uint data = 0;
