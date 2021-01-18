@@ -1,33 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Management;
-using System.Threading;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using OpenLibSys;
 using ZenStatesDebugTool;
 
 namespace RomeOverclock
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, INotifyPropertyChanged
     {
+        const string kSettingsFileName = "settings.json";
 
-        private uint _coreCount;
-        private string _cpuName;
+        public FrequencyListItem SelectedFrequencyItem
+        {
+            get
+            {
+                return AC_freqSelect.Items.Cast<FrequencyListItem>()
+                    .SingleOrDefault(i => i.Frequency == mSettings.OnGoingSettings.AllCoreFreq);
+            }
+            set
+            {
+                if (mSettings.OnGoingSettings.AllCoreFreq != value.Frequency)
+                {
+                    mSettings.OnGoingSettings.AllCoreFreq = value.Frequency;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private readonly uint _coreCount;
+        private readonly string _cpuName;
         private readonly SMUCommand mSmuCmd;
         private readonly SettingManager mSettings;
-
-        private Dictionary<string, Dictionary<string, Action>> _presetFunctions;
-
-        private int CountDecimals(decimal x)
-        {
-            var precision = 0;
-
-            while (x * (decimal)Math.Pow(10, precision) !=
-                   Math.Round(x * (decimal)Math.Pow(10, precision)))
-                precision++;
-            return precision;
-        }
+        private readonly Dictionary<string, Dictionary<string, Action>> _presetFunctions;
 
         private void PopulateFrequencyList(ComboBox.ObjectCollection l)
         {
@@ -35,28 +44,6 @@ namespace RomeOverclock
             {
                 var v = i / 1000.00;
                 l.Add(new FrequencyListItem(i, $"{v:0.00} GHz"));
-            }
-        }
-
-        private void PopulateCCDList(ComboBox.ObjectCollection l)
-        {
-            for (uint i = 0; i < _coreCount; i++)
-            {
-                l.Add(new CoreListItem(i / 8, i / 4, i));
-            }
-        }
-
-        private void PopulateVoltageList(ComboBox.ObjectCollection l)
-        {
-            for (var i = 12; i < 128; i += 1)
-            {
-                var voltage = (decimal)(1.55 - i * 0.00625);
-                int decimals = CountDecimals(voltage);
-
-                if (decimals <= 3)
-                {
-                    l.Add(new VoltageListItem(i, (double)voltage));
-                }
             }
         }
 
@@ -72,29 +59,12 @@ namespace RomeOverclock
             MessageBox.Show(ex.Message, title);
         }
 
-        private void SetButtonsEnabled(bool enabled)
+        private void EnableControls(bool enabled)
         {
-            applyAllBtn.Enabled = enabled;
             applyAllBtn.Enabled = enabled;
             revertAllBtn.Enabled = enabled;
+            saveBtn.Enabled = enabled;
             dualsocketCheck.Enabled = enabled;
-        }
-
-        private void SetFormsEnabled(bool enabled)
-        {
-            /*applyACBtn.Enabled = enabled;
-            //applySCBtn.Enabled = enabled;
-            //applyVoltageBtn.Enabled = enabled;
-            revertACBtn.Enabled = enabled;
-
-            AC_freqSelect.Enabled = enabled;
-            SC_freqSelect.Enabled = enabled;
-            SC_coreSelect.Enabled = enabled;
-            dualsocketCheck.Enabled = enabled;
-            fullPerfBtn.Enabled = enabled;
-            applyLockBtn.Enabled = enabled;
-            revertVoltageBtn.Enabled = enabled;
-            presetApplyBtn.Enabled = enabled;*/
         }
 
         private void InitDefaultForm()
@@ -102,13 +72,14 @@ namespace RomeOverclock
             SetStatus("Loading...");
 
             PopulateFrequencyList(AC_freqSelect.Items);
-            AC_freqSelect.SelectedIndex = 16;
             presetCpuSelect.SelectedIndex = 0;
             presetPresetSelect.SelectedIndex = 0;
-            SetButtonsEnabled(true);
-            SetFormsEnabled(false);
+            EnableControls(true);
 
-            voltageInp.Controls[0].Visible = false;
+            if (voltageInp.Controls.Count > 0)
+            {
+                voltageInp.Controls[0].Visible = false;
+            }
 
             SetStatus("Ready.");
         }
@@ -132,7 +103,10 @@ namespace RomeOverclock
                 Application.Exit();
             }
 
-            mSettings = new SettingManager();
+            mSettings = new SettingManager(kSettingsFileName);
+
+            mainFormBindingSource.DataSource = this;
+            settingsBindingSource.DataSource = mSettings.OnGoingSettings;
 
 #if !DEBUG
             var CPUID = mSmuCmd.CPUID;
@@ -163,115 +137,140 @@ namespace RomeOverclock
 
             InitDefaultForm();
 
-            // TODO: refactoring preset list
+            FrequencyListItem findFreqItemByFreq(int freq)
+            {
+                return AC_freqSelect.Items.Cast<FrequencyListItem>().SingleOrDefault(i => i.Frequency == freq);
+            }
+
+            // TODO: refactoring preset list use data binding
+            var settings = mSettings.OnGoingSettings;
             _presetFunctions = new Dictionary<string, Dictionary<string, Action>>
             {
                 {"64", new Dictionary<string, Action>
                 {
                     {"High Multi-core", () =>
                     {
-                        mSettings.FreqLock = false;
-                        mSettings.Voltage = SMUCommand.ToVoltageInteger(1.05m);
-                        mSettings.AllCoreFreq = 3800;
+                        settings.FreqLock = false;
+                        settings.VoltageReal = 1.05m;
+                        SelectedFrequencyItem = findFreqItemByFreq(3800);
 
-                        mSettings.EDC = 30;
-                        mSettings.TDC = 0;
-                        mSettings.PPT = 0;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 30;
+                        settings.TDC = 0;
+                        settings.PPT = 0;
                     }},
                     {"Best of both", () =>
                     {
-                        mSettings.FreqLock = true;
-                        mSettings.Voltage = _cpuName.StartsWith("2S1")? SMUCommand.ToVoltageInteger(1.05m): -1;
-                        mSettings.AllCoreFreq = 3200;
+                        settings.FreqLock = true;
+                        if (_cpuName.StartsWith("2S1")) {
+                            settings.VoltageReal = 1.05m;
+                        } else {
+                            settings.Voltage = -1;
+                        }
+                        SelectedFrequencyItem = findFreqItemByFreq(3200);
 
-                        mSettings.EDC = 600;
-                        mSettings.TDC = 0;
-                        mSettings.PPT = 0;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 600;
+                        settings.TDC = 0;
+                        settings.PPT = 0;
                     }},
                     {"High Single-core", () =>
                     {
-                        mSettings.FreqLock = true;
-                        mSettings.Voltage = _cpuName.StartsWith("2S1")? SMUCommand.ToVoltageInteger(1.1m): -1;
-                        mSettings.AllCoreFreq = 3400;
+                        settings.FreqLock = true;
+                        if (_cpuName.StartsWith("2S1")) {
+                            settings.VoltageReal = 1.1m;
+                        } else {
+                            settings.Voltage = -1;
+                        }
+                        SelectedFrequencyItem = findFreqItemByFreq(3400);
 
-                        mSettings.EDC = 700;
-                        mSettings.TDC = 700;
-                        mSettings.PPT = 1500;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 700;
+                        settings.TDC = 700;
+                        settings.PPT = 1500;
                     }}
                 }},
                 {"48", new Dictionary<string, Action>
                 {
                     {"High Multi-core", () =>
                     {
-                        mSettings.FreqLock = true;
-                        mSettings.Voltage = SMUCommand.ToVoltageInteger(1.05m);
-                        mSettings.AllCoreFreq = 3800;
+                        settings.FreqLock = true;
+                        settings.VoltageReal = 1.05m;
+                        SelectedFrequencyItem = findFreqItemByFreq(3800);
 
-                        mSettings.EDC = 45;
-                        mSettings.TDC = 0;
-                        mSettings.PPT = 0;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 45;
+                        settings.TDC = 0;
+                        settings.PPT = 0;
                     }},
                     {"Best of both", () =>
                     {
-                        mSettings.FreqLock = false;
-                        mSettings.Voltage = _cpuName.StartsWith("2S1")? SMUCommand.ToVoltageInteger(1.05m): -1;
-                        mSettings.AllCoreFreq = 3300;
+                        settings.FreqLock = false;
+                        if (_cpuName.StartsWith("2S1")) {
+                            settings.VoltageReal = 1.05m;
+                        } else {
+                            settings.Voltage = -1;
+                        }
+                        SelectedFrequencyItem = findFreqItemByFreq(3300);
 
-                        mSettings.EDC = 600;
-                        mSettings.TDC = 0;
-                        mSettings.PPT = 0;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 600;
+                        settings.TDC = 0;
+                        settings.PPT = 0;
                     }},
                     {"High Single-core", () =>
                     {
-                        mSettings.FreqLock = false;
-                        mSettings.Voltage = _cpuName.StartsWith("2S1")? SMUCommand.ToVoltageInteger(1.1m): -1;
-                        mSettings.AllCoreFreq = 3500;
+                        settings.FreqLock = false;
+                        if (_cpuName.StartsWith("2S1")) {
+                            settings.VoltageReal = 1.1m;
+                        } else {
+                            settings.Voltage = -1;
+                        }
+                        SelectedFrequencyItem = findFreqItemByFreq(3500);
 
-                        mSettings.EDC = 700;
-                        mSettings.TDC = 700;
-                        mSettings.PPT = 1500;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 700;
+                        settings.TDC = 700;
+                        settings.PPT = 1500;
                     }}
                 }},
                 {"32", new Dictionary<string, Action>
                 {
                     {"High Multi-core", () =>
                     {
-                        mSettings.FreqLock = true;
-                        mSettings.Voltage = _cpuName.StartsWith("2S1")? SMUCommand.ToVoltageInteger(1.05m): -1;
-                        mSettings.AllCoreFreq = 3450;
+                        settings.FreqLock = true;
+                        if (_cpuName.StartsWith("2S1")) {
+                            settings.VoltageReal = 1.05m;
+                        } else {
+                            settings.Voltage = -1;
+                        }
+                        SelectedFrequencyItem = findFreqItemByFreq(3450);
 
-                        mSettings.EDC = 600;
-                        mSettings.TDC = 600;
-                        mSettings.PPT = 1500;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 600;
+                        settings.TDC = 600;
+                        settings.PPT = 1500;
                     }},
                     {"Best of both", () =>
                     {
-                        mSettings.FreqLock = false;
-                        mSettings.Voltage = _cpuName.StartsWith("2S1")? SMUCommand.ToVoltageInteger(1.05m): -1;
-                        mSettings.AllCoreFreq = 3300;
+                        settings.FreqLock = false;
+                        if (_cpuName.StartsWith("2S1")) {
+                            settings.VoltageReal = 1.05m;
+                        } else {
+                            settings.Voltage = -1;
+                        }
+                        SelectedFrequencyItem = findFreqItemByFreq(3300);
 
-                        mSettings.EDC = 600;
-                        mSettings.TDC = 0;
-                        mSettings.PPT = 0;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 600;
+                        settings.TDC = 0;
+                        settings.PPT = 0;
                     }},
                     {"High Single-core", () =>
                     {
-                        mSettings.FreqLock = false;
-                        mSettings.Voltage = _cpuName.StartsWith("2S1")? SMUCommand.ToVoltageInteger(1.1m): -1;
-                        mSettings.AllCoreFreq = 3500;
+                        settings.FreqLock = false;
+                        if (_cpuName.StartsWith("2S1")) {
+                            settings.VoltageReal = 1.1m;
+                        } else {
+                            settings.Voltage = -1;
+                        }
+                        SelectedFrequencyItem = findFreqItemByFreq(3500);
 
-                        mSettings.EDC = 700;
-                        mSettings.TDC = 700;
-                        mSettings.PPT = 1500;
-                        mSettings.ApplyChanges(mSmuCmd);
+                        settings.EDC = 700;
+                        settings.TDC = 700;
+                        settings.PPT = 1500;
                     }}
                 }}
             };
@@ -279,19 +278,17 @@ namespace RomeOverclock
 
         private void applyAllBtn_Click(object sender, EventArgs e)
         {
-            mSettings.FreqLock = overclockCheck.Checked;
-            mSettings.Voltage = SMUCommand.ToVoltageInteger(voltageInp.Value);
-            mSettings.AllCoreFreq = ((FrequencyListItem)AC_freqSelect.SelectedItem).frequency;
-
-            mSettings.EDC = Convert.ToInt32(EDC_inp.Value);
-            mSettings.TDC = Convert.ToInt32(TDC_inp.Value);
-            mSettings.PPT = Convert.ToInt32(PPT_inp.Value);
             mSettings.ApplyChanges(mSmuCmd);
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            mSettings.SaveSettingToDisk();
         }
 
         private void revertAllBtn_Click(object sender, EventArgs e)
         {
-            mSettings.LoadDefaultValues();
+            mSettings.OnGoingSettings.LoadDefaultValues();
             mSettings.ApplyChanges(mSmuCmd);
         }
 
@@ -299,10 +296,21 @@ namespace RomeOverclock
         {
             var presetCPU = presetCpuSelect.Text;
             var presetPreset = presetPresetSelect.Text;
+            if (string.IsNullOrWhiteSpace(presetCPU) || string.IsNullOrWhiteSpace(presetPreset))
+            {
+                return;
+            }
+
             SetStatus(presetCPU + " " + presetPreset);
             var cores = presetCPU.Substring(0, 2);
 
             _presetFunctions[cores][presetPreset]();
+        }
+
+        // TODO: unifying this notify property operations
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

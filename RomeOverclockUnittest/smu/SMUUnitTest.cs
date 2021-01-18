@@ -21,7 +21,7 @@ namespace RomeOverclockUnitTest
         delegate void SmuReadRegCallbackType(uint addr, ref uint data, uint pciAddr);
 
         private readonly Mock<SMUCommand.LoggerDelegate> mMockLogger = new Mock<SMUCommand.LoggerDelegate>();
-        private readonly Mock<SMUCommand.OlsInterface> mMockOls = new Mock<SMUCommand.OlsInterface>();
+        private readonly Mock<SMUCommand.IOlsInterface> mMockOls = new Mock<SMUCommand.IOlsInterface>();
         private readonly SMUCommand mSubject;
 
 
@@ -75,7 +75,7 @@ namespace RomeOverclockUnitTest
         [InlineData(kPCI_ADDR_1, 100)]
         public void SmuWaitDone_will_retry_until_done(uint pciAddr, uint retryCount)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             uint callCount = 0;
             subject.Setup(mock => mock.SmuReadReg(
                     kADDR_RSP,
@@ -101,7 +101,7 @@ namespace RomeOverclockUnitTest
         [InlineData(0x18, 3400, kPCI_ADDR_1)]
         public void SmuWrite_will_clear_write_and_wait_done(uint msg, uint value, uint pciAddr)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.SmuWriteReg(
                     It.IsAny<uint>(),
                     It.IsAny<uint>(),
@@ -124,7 +124,7 @@ namespace RomeOverclockUnitTest
         [InlineData(SMUCmdConstant.kSetEDC, 700 * 1000, kPCI_ADDR_1)]
         public void ApplySMUCommand_will_apply_command_and_wait_response(SMUCmdConstant cmd, uint val, uint pciAddr)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.SmuWrite(
                     It.IsAny<uint>(),
                     It.IsAny<uint>(),
@@ -153,8 +153,8 @@ namespace RomeOverclockUnitTest
         [InlineData(SMUCmdConstant.kSetEDC, 700 * 1000, false)]
         public void ApplyCommandImpl_will_apply_command_for_all_cpu(SMUCmdConstant cmd, uint val, bool isDualSocket)
         {
-            var subject = getMockSubject(isDualSocket);
-            Assert.Equal(isDualSocket, subject.Object.isDualSocket);
+            var subject = GetMockSubject(isDualSocket);
+            Assert.Equal(isDualSocket, subject.Object.IsDualSocket);
 
             subject.Setup(mock => mock.ApplySMUCommand(
                     It.IsAny<SMUCmdConstant>(),
@@ -187,7 +187,7 @@ namespace RomeOverclockUnitTest
         [InlineData(3800)]
         public void ApplyFrequencyAllCoreSetting_will_apply_freq(uint freq)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.ApplyCommandImpl(
                     (SMUCmdConstant)0x18,
                     It.IsAny<uint>(),
@@ -207,7 +207,7 @@ namespace RomeOverclockUnitTest
         [InlineData(1500)]
         public void ApplyPPTSetting_will_apply_ppt(uint ppt)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.ApplyCommandImpl(
                     (SMUCmdConstant)0x53,
                     It.IsAny<uint>(),
@@ -227,7 +227,7 @@ namespace RomeOverclockUnitTest
         [InlineData(700)]
         public void ApplyTDCSetting_will_apply_tdc(uint tdc)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.ApplyCommandImpl(
                     (SMUCmdConstant)0x54,
                     It.IsAny<uint>(),
@@ -247,7 +247,7 @@ namespace RomeOverclockUnitTest
         [InlineData(700)]
         public void ApplyEDCSetting_will_apply_edc(uint edc)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.ApplyCommandImpl(
                     (SMUCmdConstant)0x55,
                     It.IsAny<uint>(),
@@ -269,7 +269,7 @@ namespace RomeOverclockUnitTest
         [InlineData(128)]  // max
         public void ApplyVoltage_will_apply_voltage(int voltage)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.ApplyCommandImpl(
                     (SMUCmdConstant)0x12,
                     It.IsAny<uint>(),
@@ -289,7 +289,7 @@ namespace RomeOverclockUnitTest
         [InlineData(false)]
         public void ApplyFreqLock_will_apply_freq_lock(bool isLocked)
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             var cmd = (SMUCmdConstant)(isLocked ? 0x24 : 0x25);
             subject.Setup(mock => mock.ApplyCommandImpl(
                     cmd,
@@ -308,7 +308,7 @@ namespace RomeOverclockUnitTest
         [Fact]
         public void RevertVoltage_will_revert_voltage()
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.ApplyCommandImpl(
                     (SMUCmdConstant)0x13,
                     1,
@@ -326,7 +326,7 @@ namespace RomeOverclockUnitTest
         [Fact]
         public void RevertFrequency_will_revert_freq()
         {
-            var subject = getMockSubject();
+            var subject = GetMockSubject();
             subject.Setup(mock => mock.ApplyCommandImpl(
                     (SMUCmdConstant)0x19,
                     1,
@@ -341,11 +341,22 @@ namespace RomeOverclockUnitTest
                 Times.Once());
         }
 
-        private Mock<SMUCommand> getMockSubject(bool isSualSocket = false)
+        [Theory]
+        [InlineData(105, 80)]
+        [InlineData(110, 72)]
+        public void Voltage_convert_between_int_and_decimal(int voltageInt, int val)
         {
-            var subject = new Mock<SMUCommand>(mMockOls.Object, isSualSocket, mMockLogger.Object);
-            subject.CallBase = true;
-            return subject;
+            decimal voltage = voltageInt / 100m;
+            Assert.Equal(voltage, SMUCommand.ToVoltageDecimal(val));
+            Assert.Equal(val, SMUCommand.ToVoltageInteger(voltage));
+        }
+
+        private Mock<SMUCommand> GetMockSubject(bool isSualSocket = false)
+        {
+            return new Mock<SMUCommand>(mMockOls.Object, isSualSocket, mMockLogger.Object)
+            {
+                CallBase = true
+            };
         }
     }
 }

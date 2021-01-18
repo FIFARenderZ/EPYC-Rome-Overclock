@@ -122,27 +122,63 @@
     <value>5</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="overclockCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <metadata name="settingsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>524, 17</value>
+  </metadata>
+  <data name="overclockCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="overclockCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 4</value>
+  </data>
+  <data name="overclockCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 1, 2, 1</value>
+  </data>
+  <data name="overclockCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 24</value>
+  </data>
+  <data name="overclockCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="overclockCheck.Text" xml:space="preserve">
+    <value>Lock Freq</value>
+  </data>
+  <data name="&gt;&gt;overclockCheck.Name" xml:space="preserve">
+    <value>overclockCheck</value>
+  </data>
+  <data name="&gt;&gt;overclockCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;overclockCheck.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;overclockCheck.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label13.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 39</value>
+    <value>2, 40</value>
   </data>
   <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 13</value>
+    <value>116, 13</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>CPU Voltage (V)</value>
+    <value>CPU Volt (V)</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
@@ -154,85 +190,28 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="voltageInp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="voltageInp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 35</value>
-  </data>
-  <data name="voltageInp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 1, 2, 1</value>
-  </data>
-  <data name="voltageInp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 21</value>
-  </data>
-  <data name="voltageInp.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;voltageInp.Name" xml:space="preserve">
-    <value>voltageInp</value>
-  </data>
-  <data name="&gt;&gt;voltageInp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;voltageInp.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;voltageInp.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="dualsocketCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="dualsocketCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="dualsocketCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 3</value>
-  </data>
-  <data name="dualsocketCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 1, 2, 1</value>
-  </data>
-  <data name="dualsocketCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 23</value>
-  </data>
-  <data name="dualsocketCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="dualsocketCheck.Text" xml:space="preserve">
-    <value>Dual Socket?</value>
-  </data>
-  <data name="&gt;&gt;dualsocketCheck.Name" xml:space="preserve">
-    <value>dualsocketCheck</value>
-  </data>
-  <data name="&gt;&gt;dualsocketCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dualsocketCheck.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;dualsocketCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 8</value>
+    <value>2, 9</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 13</value>
+    <value>116, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>All-core frequency</value>
+    <value>All-core Freq</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -244,34 +223,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="AC_freqSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="AC_freqSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 5</value>
-  </data>
-  <data name="AC_freqSelect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 1, 2, 1</value>
-  </data>
-  <data name="AC_freqSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 20</value>
-  </data>
-  <data name="AC_freqSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;AC_freqSelect.Name" xml:space="preserve">
-    <value>AC_freqSelect</value>
-  </data>
-  <data name="&gt;&gt;AC_freqSelect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AC_freqSelect.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;AC_freqSelect.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="applyAllBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -283,7 +235,7 @@
     <value>NoControl</value>
   </data>
   <data name="applyAllBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 4</value>
+    <value>329, 5</value>
   </data>
   <data name="applyAllBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 1, 2, 1</value>
@@ -307,7 +259,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;applyAllBtn.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="revertAllBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -319,7 +271,7 @@
     <value>NoControl</value>
   </data>
   <data name="revertAllBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>437, 4</value>
+    <value>437, 5</value>
   </data>
   <data name="revertAllBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 1, 2, 1</value>
@@ -343,7 +295,133 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;revertAllBtn.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="saveBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="saveBtn.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="saveBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="saveBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>329, 35</value>
+  </data>
+  <data name="saveBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 1, 2, 1</value>
+  </data>
+  <data name="saveBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 22</value>
+  </data>
+  <data name="saveBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="saveBtn.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;saveBtn.Name" xml:space="preserve">
+    <value>saveBtn</value>
+  </data>
+  <data name="&gt;&gt;saveBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveBtn.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;saveBtn.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="voltageInp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="voltageInp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 36</value>
+  </data>
+  <data name="voltageInp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 1, 2, 1</value>
+  </data>
+  <data name="voltageInp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 21</value>
+  </data>
+  <data name="voltageInp.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;voltageInp.Name" xml:space="preserve">
+    <value>voltageInp</value>
+  </data>
+  <data name="&gt;&gt;voltageInp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;voltageInp.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;voltageInp.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="AC_freqSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <metadata name="mainFormBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>338, 17</value>
+  </metadata>
+  <data name="AC_freqSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 6</value>
+  </data>
+  <data name="AC_freqSelect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 1, 2, 1</value>
+  </data>
+  <data name="AC_freqSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 20</value>
+  </data>
+  <data name="AC_freqSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AC_freqSelect.Name" xml:space="preserve">
+    <value>AC_freqSelect</value>
+  </data>
+  <data name="&gt;&gt;AC_freqSelect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AC_freqSelect.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;AC_freqSelect.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="dualsocketCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="dualsocketCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="dualsocketCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 35</value>
+  </data>
+  <data name="dualsocketCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 1, 2, 1</value>
+  </data>
+  <data name="dualsocketCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 23</value>
+  </data>
+  <data name="dualsocketCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="dualsocketCheck.Text" xml:space="preserve">
+    <value>Dual Socket</value>
+  </data>
+  <data name="&gt;&gt;dualsocketCheck.Name" xml:space="preserve">
+    <value>dualsocketCheck</value>
+  </data>
+  <data name="&gt;&gt;dualsocketCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dualsocketCheck.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;dualsocketCheck.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 14</value>
@@ -373,38 +451,11 @@
     <value>6</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="voltageInp" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="dualsocketCheck" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="AC_freqSelect" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="applyAllBtn" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="revertAllBtn" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Absolute,109,Absolute,96,Absolute,108,Absolute,96,Absolute,15" /&gt;&lt;Rows Styles="Percent,22.44094,Absolute,31" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="overclockCheck" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="applyAllBtn" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="revertAllBtn" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="saveBtn" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="voltageInp" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="AC_freqSelect" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="dualsocketCheck" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Absolute,106,Absolute,101,Absolute,108,Absolute,96,Absolute,15" /&gt;&lt;Rows Styles="Percent,22.44094,Absolute,29" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="overclockCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="overclockCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 3</value>
-  </data>
-  <data name="overclockCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 1, 2, 1</value>
-  </data>
-  <data name="overclockCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 24</value>
-  </data>
-  <data name="overclockCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="overclockCheck.Text" xml:space="preserve">
-    <value>Lock Frequency</value>
-  </data>
-  <data name="&gt;&gt;overclockCheck.Name" xml:space="preserve">
-    <value>overclockCheck</value>
-  </data>
-  <data name="&gt;&gt;overclockCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;overclockCheck.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;overclockCheck.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+  <metadata name="settingManagerBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
+  </metadata>
   <data name="EDC_inp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
@@ -430,7 +481,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;EDC_inp.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="TDC_inp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -517,7 +568,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -554,6 +605,9 @@
   </data>
   <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 4</value>
@@ -631,10 +685,10 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 11</value>
+    <value>3, 9</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 1</value>
+    <value>14, 1</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -661,10 +715,10 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 33</value>
+    <value>3, 20</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>14, 20</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -688,13 +742,13 @@
     <value>Left, Right</value>
   </data>
   <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 34</value>
+    <value>23, 22</value>
   </data>
   <data name="comboBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 20</value>
+    <value>14, 20</value>
   </data>
   <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -715,13 +769,13 @@
     <value>Left, Right</value>
   </data>
   <data name="comboBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 2</value>
+    <value>43, 2</value>
   </data>
   <data name="comboBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="comboBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 20</value>
+    <value>14, 20</value>
   </data>
   <data name="comboBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -742,13 +796,13 @@
     <value>Left, Right</value>
   </data>
   <data name="comboBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 34</value>
+    <value>43, 22</value>
   </data>
   <data name="comboBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="comboBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 20</value>
+    <value>14, 20</value>
   </data>
   <data name="comboBox3.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -775,13 +829,13 @@
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>63, 9</value>
   </data>
   <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 1</value>
+    <value>62, 1</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -811,13 +865,13 @@
     <value>NoControl</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 26</value>
+    <value>63, 22</value>
   </data>
   <data name="button2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 36</value>
+    <value>62, 16</value>
   </data>
   <data name="button2.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -844,10 +898,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 192</value>
+    <value>3, 123</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 24</value>
+    <value>14, 14</value>
   </data>
   <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -877,13 +931,13 @@
     <value>NoControl</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 186</value>
+    <value>63, 122</value>
   </data>
   <data name="button3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 36</value>
+    <value>62, 16</value>
   </data>
   <data name="button3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -913,13 +967,13 @@
     <value>NoControl</value>
   </data>
   <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 146</value>
+    <value>63, 102</value>
   </data>
   <data name="button4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 36</value>
+    <value>62, 16</value>
   </data>
   <data name="button4.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -949,13 +1003,13 @@
     <value>NoControl</value>
   </data>
   <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 106</value>
+    <value>63, 82</value>
   </data>
   <data name="button5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 36</value>
+    <value>62, 16</value>
   </data>
   <data name="button5.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -985,13 +1039,13 @@
     <value>NoControl</value>
   </data>
   <data name="button6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 66</value>
+    <value>63, 62</value>
   </data>
   <data name="button6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="button6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 36</value>
+    <value>62, 16</value>
   </data>
   <data name="button6.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1015,13 +1069,13 @@
     <value>Left, Right</value>
   </data>
   <data name="numericUpDown1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 153</value>
+    <value>43, 102</value>
   </data>
   <data name="numericUpDown1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="numericUpDown1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>14, 21</value>
   </data>
   <data name="numericUpDown1.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1042,13 +1096,13 @@
     <value>Left, Right</value>
   </data>
   <data name="numericUpDown2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 113</value>
+    <value>43, 82</value>
   </data>
   <data name="numericUpDown2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="numericUpDown2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>14, 21</value>
   </data>
   <data name="numericUpDown2.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1069,13 +1123,13 @@
     <value>Left, Right</value>
   </data>
   <data name="numericUpDown3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 73</value>
+    <value>43, 62</value>
   </data>
   <data name="numericUpDown3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="numericUpDown3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>14, 21</value>
   </data>
   <data name="numericUpDown3.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1099,10 +1153,10 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 153</value>
+    <value>3, 100</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>14, 20</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1129,10 +1183,10 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 113</value>
+    <value>3, 80</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>14, 20</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1174,7 +1228,7 @@
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label6" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="comboBox1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="comboBox3" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="button1" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button2" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="checkBox1" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="button3" Row="6" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button4" Row="5" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button5" Row="4" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button6" Row="3" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDown1" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDown2" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDown3" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="" /&gt;&lt;Rows Styles="" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label6" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="comboBox1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="comboBox3" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="button1" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button2" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="checkBox1" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="button3" Row="6" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button4" Row="5" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button5" Row="4" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="button6" Row="3" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDown1" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDown2" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDown3" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label8" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;Rows Styles="Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="label10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -1209,14 +1263,17 @@
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 7pt</value>
   </data>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 85</value>
+    <value>2, 85</value>
   </data>
   <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 33</value>
+    <value>160, 33</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -1237,7 +1294,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 3</value>
@@ -1267,7 +1324,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PPT_inp" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TDC_inp" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label14" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="EDC_inp" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,164,Absolute,118,Absolute,15,Absolute,15" /&gt;&lt;Rows Styles="Percent,48.71795,Percent,51.28205,Absolute,25,Absolute,60,Absolute,12" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PPT_inp" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TDC_inp" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="EDC_inp" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label14" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,164,Absolute,118,Absolute,15,Absolute,15" /&gt;&lt;Rows Styles="Percent,48.71795,Percent,51.28205,Absolute,25,Absolute,60,Absolute,12" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="label11.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -1326,6 +1383,9 @@
   <data name="&gt;&gt;logBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 108</value>
   </data>
@@ -1349,6 +1409,9 @@
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>438, 255</value>
@@ -1407,92 +1470,32 @@
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 5</value>
-  </data>
-  <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 1, 2, 1</value>
-  </data>
-  <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 60</value>
-  </data>
-  <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="overclockCheck" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPage2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 1, 2, 1</value>
-  </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 1, 2, 1</value>
-  </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 131</value>
-  </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Extra</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="presetPresetSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
   <data name="presetPresetSelect.Items" xml:space="preserve">
-    <value>High Multi-core</value>
+    <value />
   </data>
   <data name="presetPresetSelect.Items1" xml:space="preserve">
-    <value>Best of both</value>
+    <value>High Multi-core</value>
   </data>
   <data name="presetPresetSelect.Items2" xml:space="preserve">
+    <value>Best of both</value>
+  </data>
+  <data name="presetPresetSelect.Items3" xml:space="preserve">
     <value>High Single-core</value>
   </data>
   <data name="presetPresetSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 5</value>
+    <value>141, 5</value>
   </data>
   <data name="presetPresetSelect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 1, 2, 1</value>
   </data>
   <data name="presetPresetSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 20</value>
+    <value>136, 20</value>
   </data>
   <data name="presetPresetSelect.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1513,12 +1516,15 @@
     <value>Left, Right</value>
   </data>
   <data name="presetCpuSelect.Items" xml:space="preserve">
-    <value>64-core EPYC ES</value>
+    <value />
   </data>
   <data name="presetCpuSelect.Items1" xml:space="preserve">
-    <value>48-core EPYC ES</value>
+    <value>64-core EPYC ES</value>
   </data>
   <data name="presetCpuSelect.Items2" xml:space="preserve">
+    <value>48-core EPYC ES</value>
+  </data>
+  <data name="presetCpuSelect.Items3" xml:space="preserve">
     <value>32-core EPYC ES</value>
   </data>
   <data name="presetCpuSelect.Location" type="System.Drawing.Point, System.Drawing">
@@ -1528,7 +1534,7 @@
     <value>2, 1, 2, 1</value>
   </data>
   <data name="presetCpuSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 20</value>
+    <value>135, 20</value>
   </data>
   <data name="presetCpuSelect.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1603,7 +1609,7 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 85</value>
@@ -4556,6 +4562,24 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>AMD EPYC™ Rome ES Overclocking</value>
+  </data>
+  <data name="&gt;&gt;settingsBindingSource.Name" xml:space="preserve">
+    <value>settingsBindingSource</value>
+  </data>
+  <data name="&gt;&gt;settingsBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainFormBindingSource.Name" xml:space="preserve">
+    <value>mainFormBindingSource</value>
+  </data>
+  <data name="&gt;&gt;mainFormBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;settingManagerBindingSource.Name" xml:space="preserve">
+    <value>settingManagerBindingSource</value>
+  </data>
+  <data name="&gt;&gt;settingManagerBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
     <value>statusLabel</value>
