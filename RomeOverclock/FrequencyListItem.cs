@@ -2,18 +2,18 @@
 {
     public class FrequencyListItem
     {
-        public int frequency { get; }
-        public string display { get; }
+        public int Frequency { get; }
+        public string Display { get; }
 
         public FrequencyListItem(int frequency, string display)
         {
-            this.frequency = frequency;
-            this.display = display;
+            this.Frequency = frequency;
+            this.Display = display;
         }
 
         public override string ToString()
         {
-            return display;
+            return Display;
         }
     }
 }

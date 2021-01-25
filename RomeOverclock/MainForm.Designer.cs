@@ -29,16 +29,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.overclockCheck = new System.Windows.Forms.CheckBox();
+            this.settingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label13 = new System.Windows.Forms.Label();
-            this.voltageInp = new System.Windows.Forms.NumericUpDown();
-            this.dualsocketCheck = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.AC_freqSelect = new System.Windows.Forms.ComboBox();
             this.applyAllBtn = new System.Windows.Forms.Button();
             this.revertAllBtn = new System.Windows.Forms.Button();
-            this.overclockCheck = new System.Windows.Forms.CheckBox();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.voltageInp = new System.Windows.Forms.NumericUpDown();
+            this.AC_freqSelect = new System.Windows.Forms.ComboBox();
+            this.mainFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dualsocketCheck = new System.Windows.Forms.CheckBox();
+            this.settingManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EDC_inp = new System.Windows.Forms.NumericUpDown();
             this.TDC_inp = new System.Windows.Forms.NumericUpDown();
             this.PPT_inp = new System.Windows.Forms.NumericUpDown();
@@ -74,8 +79,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.presetPresetSelect = new System.Windows.Forms.ComboBox();
@@ -99,7 +102,10 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.voltageInp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingManagerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDC_inp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDC_inp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPT_inp)).BeginInit();
@@ -111,8 +117,6 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -124,24 +128,64 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.overclockCheck, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.voltageInp, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dualsocketCheck, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.AC_freqSelect, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.applyAllBtn, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.revertAllBtn, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.saveBtn, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.voltageInp, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.AC_freqSelect, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dualsocketCheck, 2, 1);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // overclockCheck
+            // 
+            resources.ApplyResources(this.overclockCheck, "overclockCheck");
+            this.overclockCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.settingsBindingSource, "FreqLock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.overclockCheck.Name = "overclockCheck";
+            this.overclockCheck.UseVisualStyleBackColor = true;
+            // 
+            // settingsBindingSource
+            // 
+            this.settingsBindingSource.DataSource = typeof(RomeOverclock.SettingManager.Settings);
             // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // applyAllBtn
+            // 
+            resources.ApplyResources(this.applyAllBtn, "applyAllBtn");
+            this.applyAllBtn.Name = "applyAllBtn";
+            this.applyAllBtn.UseVisualStyleBackColor = true;
+            this.applyAllBtn.Click += new System.EventHandler(this.applyAllBtn_Click);
+            // 
+            // revertAllBtn
+            // 
+            resources.ApplyResources(this.revertAllBtn, "revertAllBtn");
+            this.revertAllBtn.Name = "revertAllBtn";
+            this.revertAllBtn.UseVisualStyleBackColor = true;
+            this.revertAllBtn.Click += new System.EventHandler(this.revertAllBtn_Click);
+            // 
+            // saveBtn
+            // 
+            resources.ApplyResources(this.saveBtn, "saveBtn");
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
             // voltageInp
             // 
             resources.ApplyResources(this.voltageInp, "voltageInp");
+            this.voltageInp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.settingsBindingSource, "VoltageReal", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
             this.voltageInp.DecimalPlaces = 2;
             this.voltageInp.Increment = new decimal(new int[] {
             5,
@@ -166,47 +210,33 @@
             0,
             65536});
             // 
-            // dualsocketCheck
-            // 
-            resources.ApplyResources(this.dualsocketCheck, "dualsocketCheck");
-            this.dualsocketCheck.Name = "dualsocketCheck";
-            this.dualsocketCheck.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // AC_freqSelect
             // 
             resources.ApplyResources(this.AC_freqSelect, "AC_freqSelect");
+            this.AC_freqSelect.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.mainFormBindingSource, "SelectedFrequencyItem", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AC_freqSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AC_freqSelect.FormattingEnabled = true;
             this.AC_freqSelect.Name = "AC_freqSelect";
             // 
-            // applyAllBtn
+            // mainFormBindingSource
             // 
-            resources.ApplyResources(this.applyAllBtn, "applyAllBtn");
-            this.applyAllBtn.Name = "applyAllBtn";
-            this.applyAllBtn.UseVisualStyleBackColor = true;
-            this.applyAllBtn.Click += new System.EventHandler(this.applyAllBtn_Click);
+            this.mainFormBindingSource.DataSource = typeof(RomeOverclock.MainForm);
             // 
-            // revertAllBtn
+            // dualsocketCheck
             // 
-            resources.ApplyResources(this.revertAllBtn, "revertAllBtn");
-            this.revertAllBtn.Name = "revertAllBtn";
-            this.revertAllBtn.UseVisualStyleBackColor = true;
-            this.revertAllBtn.Click += new System.EventHandler(this.revertAllBtn_Click);
+            resources.ApplyResources(this.dualsocketCheck, "dualsocketCheck");
+            this.dualsocketCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.settingsBindingSource, "DualSocket", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dualsocketCheck.Name = "dualsocketCheck";
+            this.dualsocketCheck.UseVisualStyleBackColor = true;
             // 
-            // overclockCheck
+            // settingManagerBindingSource
             // 
-            resources.ApplyResources(this.overclockCheck, "overclockCheck");
-            this.overclockCheck.Name = "overclockCheck";
-            this.overclockCheck.UseVisualStyleBackColor = true;
+            this.settingManagerBindingSource.DataSource = typeof(RomeOverclock.SettingManager);
             // 
             // EDC_inp
             // 
             resources.ApplyResources(this.EDC_inp, "EDC_inp");
+            this.EDC_inp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.settingsBindingSource, "EDC", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
             this.EDC_inp.InterceptArrowKeys = false;
             this.EDC_inp.Maximum = new decimal(new int[] {
             1500,
@@ -218,6 +248,7 @@
             // TDC_inp
             // 
             resources.ApplyResources(this.TDC_inp, "TDC_inp");
+            this.TDC_inp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.settingsBindingSource, "TDC", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
             this.TDC_inp.InterceptArrowKeys = false;
             this.TDC_inp.Maximum = new decimal(new int[] {
             1000,
@@ -229,6 +260,7 @@
             // PPT_inp
             // 
             resources.ApplyResources(this.PPT_inp, "PPT_inp");
+            this.PPT_inp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.settingsBindingSource, "PPT", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
             this.PPT_inp.InterceptArrowKeys = false;
             this.PPT_inp.Maximum = new decimal(new int[] {
             1800,
@@ -449,9 +481,9 @@
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.TDC_inp, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label14, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.EDC_inp, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label14, 0, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
             // label14
@@ -486,7 +518,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
@@ -498,19 +529,6 @@
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Window;
-            this.tabPage2.Controls.Add(this.tableLayoutPanel4);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            // 
-            // tableLayoutPanel4
-            // 
-            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.overclockCheck, 0, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
             // tabPage3
             // 
@@ -535,8 +553,10 @@
             this.presetPresetSelect.Items.AddRange(new object[] {
             resources.GetString("presetPresetSelect.Items"),
             resources.GetString("presetPresetSelect.Items1"),
-            resources.GetString("presetPresetSelect.Items2")});
+            resources.GetString("presetPresetSelect.Items2"),
+            resources.GetString("presetPresetSelect.Items3")});
             this.presetPresetSelect.Name = "presetPresetSelect";
+            this.presetPresetSelect.SelectedValueChanged += new System.EventHandler(this.presetApplyBtn_Click);
             // 
             // presetCpuSelect
             // 
@@ -546,8 +566,10 @@
             this.presetCpuSelect.Items.AddRange(new object[] {
             resources.GetString("presetCpuSelect.Items"),
             resources.GetString("presetCpuSelect.Items1"),
-            resources.GetString("presetCpuSelect.Items2")});
+            resources.GetString("presetCpuSelect.Items2"),
+            resources.GetString("presetCpuSelect.Items3")});
             this.presetCpuSelect.Name = "presetCpuSelect";
+            this.presetCpuSelect.SelectedValueChanged += new System.EventHandler(this.presetApplyBtn_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -726,7 +748,10 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.voltageInp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingManagerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDC_inp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TDC_inp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PPT_inp)).EndInit();
@@ -739,8 +764,6 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -796,10 +819,8 @@
         private System.Windows.Forms.NumericUpDown voltageInp;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button button9;
@@ -822,5 +843,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ComboBox presetPresetSelect;
         private System.Windows.Forms.ComboBox presetCpuSelect;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.BindingSource settingManagerBindingSource;
+        private System.Windows.Forms.BindingSource mainFormBindingSource;
+        private System.Windows.Forms.BindingSource settingsBindingSource;
     }
 }

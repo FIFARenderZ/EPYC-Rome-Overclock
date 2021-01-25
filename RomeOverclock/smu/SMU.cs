@@ -10,7 +10,6 @@ using RomeOverclock;
 
 namespace ZenStatesDebugTool
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>")]
     public abstract class SMU
     {
         public enum CPUType : int
@@ -100,7 +99,7 @@ namespace ZenStatesDebugTool
     {
         public delegate void LoggerDelegate(string msg);
 
-        public interface OlsInterface : IDisposable
+        public interface IOlsInterface : IDisposable
         {
             uint GetStatus();
 
@@ -131,7 +130,7 @@ namespace ZenStatesDebugTool
             kFullPerf = 0xA,
         }
 
-        private class OlsImpl : OlsInterface
+        private class OlsImpl : IOlsInterface
         {
             private readonly Ols mOls;
 
@@ -172,7 +171,7 @@ namespace ZenStatesDebugTool
         }
 
         private bool mIsDualSocket;
-        private readonly OlsInterface mOls;
+        private readonly IOlsInterface mOls;
         private readonly LoggerDelegate mLogger;
         private readonly SMU mSmu = new Zen2Settings();
         private readonly Mutex mMutexPci = new Mutex();
@@ -186,7 +185,7 @@ namespace ZenStatesDebugTool
             mLogger = logger;
         }
 
-        internal SMUCommand(OlsInterface ols, bool isDualSocket, LoggerDelegate logger)
+        internal SMUCommand(IOlsInterface ols, bool isDualSocket, LoggerDelegate logger)
         {
             mOls = ols;
             mIsDualSocket = isDualSocket;
@@ -198,7 +197,7 @@ namespace ZenStatesDebugTool
             mOls.Dispose();
         }
 
-        public bool isDualSocket
+        public bool IsDualSocket
         {
             get { return mIsDualSocket; }
             set { mIsDualSocket = value; }
@@ -274,7 +273,7 @@ namespace ZenStatesDebugTool
             {
                 return ApplyCommandImpl(SMUCmdConstant.kResetDefaultFreqLock, 1, (_) =>
                 {
-                    return "Locked frequencies.";
+                    return "Unlocked frequencies.";
                 });
             }
         }
@@ -292,30 +291,6 @@ namespace ZenStatesDebugTool
             return ApplyCommandImpl(SMUCmdConstant.kResetDefaultFreq, 1, (_) =>
             {
                 return "Reverted frequency to normal.";
-            });
-        }
-
-        /**
-         * Doesn't work as intended because coresnumber != ccd number
-         */
-        private void ApplyFrequencySingleCoreSetting(CoreListItem i, uint frequency)
-        {
-            var data = Convert.ToUInt32(((i.CCD << 4 | (i.CCX % 2) & 0xf) << 4 | (i.CORE % 4) & 0xf) << 0x14 |
-                                        frequency & 0xfffff);
-            if (ApplySMUCommand(SMUCmdConstant.kSetSingleCoreFreq, data, mSmu.SMU_PCI_ADDR) == SMU.Status.OK)
-            {
-                mLogger.Invoke($"Set core {i} frequency to {frequency} MHz!");
-            }
-        }
-
-        /**
-         * DO NOT USE, COULD BE DANGEROUS
-         */
-        private bool ApplyFullPerfSetting(bool apply = true)
-        {
-            return ApplyCommandImpl(SMUCmdConstant.kFullPerf, Convert.ToUInt32(400), (_) =>
-            {
-                return "Unlocked full performance.";
             });
         }
 
@@ -424,32 +399,6 @@ namespace ZenStatesDebugTool
             }
 
             if (timeout == 0 || data != 1) res = false;
-
-            return res;
-        }
-
-        private bool SmuRead(uint msg, ref uint data, uint pciAddr)
-        {
-            bool res;
-
-            // Clear response
-            res = SmuWriteReg(mSmu.SMU_ADDR_RSP, 0, pciAddr);
-
-            if (res)
-            {
-                // Send message
-                res = SmuWriteReg(mSmu.SMU_ADDR_MSG, msg, pciAddr);
-                if (res)
-                {
-                    // Check completion
-                    res = SmuWaitDone(pciAddr);
-
-                    if (res)
-                    {
-                        res = SmuReadReg(mSmu.SMU_ADDR_ARG0, ref data, pciAddr);
-                    }
-                }
-            }
 
             return res;
         }
