@@ -4,8 +4,8 @@ orbs:
   win: circleci/windows@2.2.0
 
 jobs:
-  build:
-    executor: win/default     
+  build-test-release-windows:
+    executor: win/default
     steps:
       - checkout
       - run:
@@ -18,8 +18,19 @@ jobs:
           name: "Build release"
           command: msbuild RomeOverclock/RomeOverclock.csproj /property:Configuration=Release
       - run:
-          name: "Build unit test"
+          name: "Build unit tests"
           command: msbuild RomeOverclockUnittest\RomeOverclockUnittest.csproj /property:Configuration=Debug
       - run:
-          name: "Run unit test"
+          name: "Run unit tests"
           command: dotnet vstest RomeOverclockUnitTest/bin/Debug/netcoreapp3.1/RomeOverclockUnitTest.dll
+      - run:
+          name: "Compress build artifacts"
+          command: rm -R ./output; mkdir ./output; Compress-Archive .\RomeOverclock\bin\Release\* ./output/rome_overclock.zip -Force
+      - store_artifacts:
+          path: ./output/rome_overclock.zip
+
+workflows:
+  version: 2
+  build-test-release:
+    jobs:
+      - build-test-release-windows
