@@ -25,9 +25,9 @@ jobs:
           command: dotnet vstest RomeOverclockUnitTest/bin/Debug/netcoreapp3.1/RomeOverclockUnitTest.dll
       - run:
           name: "Compress build artifacts"
-          command: rm -R ./output; mkdir ./output; Compress-Archive .\RomeOverclock\bin\Release\* ./output/rome_overclock.zip -Force
+          command: rm ./rome_overclock.zip; Compress-Archive ./RomeOverclock/bin/Release/* ./rome_overclock.zip -Force
       - store_artifacts:
-          path: ./output/rome_overclock.zip
+          path: ./rome_overclock.zip
 
 workflows:
   version: 2
