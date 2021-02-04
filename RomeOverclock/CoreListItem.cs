@@ -2,11 +2,11 @@
 {
     public class CoreListItem
     {
-        public int CCD { get; }
-        public int CCX { get; }
-        public int CORE { get; }
+        public uint CCD { get; }
+        public uint CCX { get; }
+        public uint CORE { get; }
 
-        public CoreListItem(int ccd, int ccx, int core)
+        public CoreListItem(uint ccd, uint ccx, uint core)
         {
             CCD = ccd;
             CCX = ccx;

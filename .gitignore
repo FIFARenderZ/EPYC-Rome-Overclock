@@ -3,3 +3,10 @@
 RomeOverclock/bin/
 RomeOverclock/obj/
 Confused/
+.vs
+*.user
+RomeOverclockUnittest/obj
+packages
+RomeOverclockUnitTest/bin
+output
+rome_overclock.zip
