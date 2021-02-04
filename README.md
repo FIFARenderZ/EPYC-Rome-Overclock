@@ -9,4 +9,4 @@ Feel free to contribute to this project via merge requests.
 
 | | Build |
 | --- | --- |
-| Pipeline | [![<Build status>](https://circleci.com/gh/chraac/EPYC-Rome-Overclock.svg?style=svg)](https://app.circleci.com/pipelines/github/chraac/EPYC-Rome-Overclock) |
+| Pipeline | [![<Build status>](https://circleci.com/gh/FIFARenderZ/EPYC-Rome-Overclock.svg?style=svg)](https://app.circleci.com/pipelines/github/FIFARenderZ/EPYC-Rome-Overclock) |
